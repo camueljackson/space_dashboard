@@ -1,0 +1,9 @@
+@import "~antd/dist/antd.css";
+.ant-layout-header.site-layout-background {
+  background-color: #f0f2f5;
+}
+
+.logo {
+  color: white;
+  float: right;
+}
