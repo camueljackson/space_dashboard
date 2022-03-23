@@ -22,7 +22,6 @@ const Pod = () => {
       );
       const data = await response.json();
       setPod(data);
-      console.log(data);
     } catch (err) {
       console.error(err);
     }

@@ -1,14 +1,18 @@
 import "./App.css";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+import { PageHeader } from "antd";
 
 const App = () => {
   return (
-    <Link to="/telescope">
-      <Button>
-        <p>Click Me!</p>
-      </Button>
-    </Link>
+    <div>
+      <PageHeader title="Welcome to the Space Dashboard" />
+      <div>
+        <Link to="/neos">Visit today's list of terrifying space orbiters</Link>
+      </div>
+      <div>
+        <Link to="/pod">Decompress with a pretty picture</Link>
+      </div>
+    </div>
   );
 };
 

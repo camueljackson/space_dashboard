@@ -13,6 +13,18 @@ const columns = [
     key: "is_potentially_hazardous_asteroid",
     render: isPotentiallyHazardous =>
       isPotentiallyHazardous ? "Yikes! Yes" : "All Good"
+  },
+  {
+    title: "Estimated Diameter (maximum)",
+    dataIndex: "estimated_diameter",
+    key: "estimated_diameter",
+    render: props => Math.floor(props) + " ft"
+  },
+  {
+    title: "Closest Approach (Au)",
+    dataIndex: "miss_distance",
+    key: "miss_distance"
+    // render: props => console.log(props)
   }
 ];
 
@@ -28,13 +40,18 @@ const NearEarthObjects = () => {
 
       for (const [key, value] of Object.entries(data.near_earth_objects)) {
         value.map(neo => {
+          console.log(neo);
           setDataSource(preDataSource => [
             ...preDataSource,
             {
               key: neo.id,
               name: neo.name,
               is_potentially_hazardous_asteroid:
-                neo.is_potentially_hazardous_asteroid
+                neo.is_potentially_hazardous_asteroid,
+              estimated_diameter:
+                neo.estimated_diameter.feet.estimated_diameter_max,
+              miss_distance:
+                neo.close_approach_data[0].miss_distance.astronomical
             }
           ]);
         });
@@ -57,6 +74,7 @@ const NearEarthObjects = () => {
       <Table
         dataSource={dataSource}
         columns={columns}
+        pagination={{ pageSize: 7 }}
         loading={!dataSource.length}
       />
     </div>

@@ -11,7 +11,7 @@ render(
     <LayoutDesign>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/near-earth-objects" element={<NearEarthObjects />} />
+        <Route path="/neos" element={<NearEarthObjects />} />
         <Route path="/pod" element={<Pod />} />
       </Routes>
     </LayoutDesign>
