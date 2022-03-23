@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
+const router = require("express").Router();
+const got = require("got");
+const { pipeline } = require("stream");
 
-app.get("/webb-space-telescope", (req, res) => {
-  res.json({ text: "hello!" });
-});
+app.get("/webb-space-telescope", (req, res) => {});
 
 const PORT = process.env.PORT || 8080;
 
