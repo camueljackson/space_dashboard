@@ -12,6 +12,7 @@ const LayoutDesign = props => {
 
   useEffect(() => {
     setActiveKey(route);
+    console.log("route", route);
   }, [route]);
 
   return (
@@ -26,7 +27,7 @@ const LayoutDesign = props => {
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
-          <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
+          <Menu mode="inline" style={{ height: "100%" }}>
             <Menu.Item key="neos">
               <Link to="/neos">Near Earth Objects</Link>
             </Menu.Item>
