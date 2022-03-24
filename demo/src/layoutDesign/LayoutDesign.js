@@ -12,7 +12,6 @@ const LayoutDesign = props => {
 
   useEffect(() => {
     setActiveKey(route);
-    console.log("route", route);
   }, [route]);
 
   return (
