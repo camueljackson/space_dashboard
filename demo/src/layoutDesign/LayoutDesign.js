@@ -1,20 +1,21 @@
-import { Layout, Menu } from "antd";
-import { RocketOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Layout, Menu, Spin } from "antd";
+import { RocketOutlined } from "@ant-design/icons";
+
 const { Header, Content, Sider } = Layout;
 
 const LayoutDesign = props => {
-  const route = window.location.href.substring(
-    window.location.href.lastIndexOf("/") + 1
-  );
-  const [activeKey, setActiveKey] = useState("neos");
+  const location = useLocation();
+  const [activeKey, setActiveKey] = useState("");
 
   useEffect(() => {
-    setActiveKey(route);
-  }, [route]);
+    setActiveKey(location.pathname);
+  }, []);
 
-  return (
+  return !activeKey ? (
+    <Spin size="large" />
+  ) : (
     <Layout>
       <Header className="header">
         <Link to="/">
@@ -26,11 +27,15 @@ const LayoutDesign = props => {
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
-          <Menu mode="inline" style={{ height: "100%" }}>
-            <Menu.Item key="neos">
+          <Menu
+            mode="inline"
+            style={{ height: "100%" }}
+            defaultSelectedKeys={[activeKey]}
+          >
+            <Menu.Item key="/neos">
               <Link to="/neos">Near Earth Objects</Link>
             </Menu.Item>
-            <Menu.Item key="pod">
+            <Menu.Item key="/pod">
               <Link to="/pod">Space Picture of the Day</Link>
             </Menu.Item>
           </Menu>
